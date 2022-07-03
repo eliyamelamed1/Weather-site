@@ -2,6 +2,7 @@ import { fetchCurrentWeather } from "../queries/fetchCurrentWeather";
 import { fetchForecast } from "../queries/fetchForecast";
 import { useQuery } from "react-query";
 
+
 function WeatherRequest(city) {
   const { data: currentWeatherData, status: currentWeatherStatus } = useQuery(
     ["currentWeather", city],

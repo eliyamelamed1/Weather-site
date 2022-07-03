@@ -7,6 +7,7 @@ import { Pagination } from "swiper";
 import React from "react";
 
 function ForeCast(props) {
+  
   return (
     <div className="forecast_container">
       <Swiper

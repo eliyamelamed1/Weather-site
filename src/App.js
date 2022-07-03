@@ -8,6 +8,7 @@ import { useStateValue } from "./context/StateProvider";
 import WeatherRequest from "./requests/WeatherRequest";
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
+import image from "./backgroundPhotos/moonlight.jpg";
 
 function App() {
   const { Location } = useStateValue();
