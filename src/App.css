@@ -7,6 +7,9 @@
 .time_weather {
   width: clamp(200px, 100%, 2200px);
 }
+.loading {
+  margin-top: 200px;
+}
 @media screen and (max-width: 880px) {
   .body {
     margin-top: 10px;

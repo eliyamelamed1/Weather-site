@@ -1,10 +1,7 @@
 import "./_forecast-component.scss";
-import { BsFillSunFill } from "react-icons/bs";
-import icons from "../WeatherIconsObject";
-
+import icons from "../../utils/WeatherIconsObject";
 
 function ForeCastComponent(props) {
-
   return (
     <div className="ForeCastComponent_container ">
       <h1>{props.date}</h1>

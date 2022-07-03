@@ -1,19 +1,31 @@
 import React from "react";
 import "./_weather-info.scss";
-import object from "../object";
-import icons from "../WeatherIconsObject";
-import WeatherRequest from "../WeatherRequest";
-function WeatherInfo() {
-  // const [object2, object] = WeatherRequest("israel");
+import icons from "../../utils/WeatherIconsObject";
 
-  const sunrise = new Date(object.sys.sunrise * 1000).toLocaleTimeString([], {
-    hour: "numeric",
-    minute: "numeric",
-  });
-  const sunset = new Date(object.sys.sunset * 1000).toLocaleTimeString([], {
-    hour: "numeric",
-    minute: "numeric",
-  });
+function WeatherInfo(props) {
+  const object = props.currentWeatherData.data;
+
+  const sunrise =
+    new Date((object.sys.sunrise + object.timezone) * 1000)
+      .getUTCHours()
+      .toString()
+      .padStart(2, "0") +
+    ":" +
+    new Date((object.sys.sunrise + object.timezone) * 1000)
+      .getUTCMinutes()
+      .toString()
+      .padStart(2, "0");
+
+  const sunset =
+    new Date((object.sys.sunset + object.timezone) * 1000)
+      .getUTCHours()
+      .toString()
+      .padStart(2, "0") +
+    ":" +
+    new Date((object.sys.sunset + object.timezone) * 1000)
+      .getUTCMinutes()
+      .toString()
+      .padStart(2, "0");
 
   return (
     <div className="weather">

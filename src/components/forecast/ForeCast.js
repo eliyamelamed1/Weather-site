@@ -1,18 +1,12 @@
-import React from "react";
-import ForeCastComponent from "./ForeCastComponent";
 import "./_forecast.scss";
-import WeatherRequest from "../WeatherRequest";
-import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
+import { Swiper, SwiperSlide } from "swiper/react";
+import ForeCastComponent from "./ForeCastComponent";
 import { Pagination } from "swiper";
-import object from "../object";
-import object2 from "../object2";
+import React from "react";
 
-function ForeCast() {
-  // const [object2, object] = WeatherRequest("London");
-  console.log(object2, object);
-
+function ForeCast(props) {
   return (
     <div className="forecast_container">
       <Swiper
@@ -34,18 +28,24 @@ function ForeCast() {
         modules={[Pagination]}
         className="mySwiper"
       >
-        {object2.list.slice(0, 8).map((data, index) => {
+        {props.forecastData?.data.list.slice(0, 8).map((data, index) => {
           return (
             <SwiperSlide key={index}>
               <ForeCastComponent
-                date={new Date(data.dt * 1000).toLocaleDateString([], {
-                  day: "numeric",
-                  month: "numeric",
-                })}
-                time={new Date(data.dt * 1000).toLocaleTimeString([], {
-                  hour: "numeric",
-                  minute: "numeric",
-                })}
+                date={
+                  new Date(
+                    (data.dt + props.forecastData?.data.city.timezone) * 1000
+                  ).getUTCDate() +
+                  "." +
+                  new Date(
+                    (data.dt + props.forecastData?.data.city.timezone) * 1000
+                  ).getUTCMonth()
+                }
+                time={
+                  new Date(
+                    (data.dt + props.forecastData?.data.city.timezone) * 1000
+                  ).getUTCHours() + ":00"
+                }
                 degree={data.main.temp.toFixed()}
                 icon={data.weather[0].icon}
               />
